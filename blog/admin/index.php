@@ -1,8 +1,12 @@
 <?php
-
+session_start();
+if(isset($_SESSION['id'])){
+  header('Location:dashboard.php');
+}
 use App\classes\Login;
 
 require_once "../vendor/autoload.php";
+$message='';
 if(isset($_POST['btn'])){
   //echo 'Values are <br/>';
   //print_r($_POST);
