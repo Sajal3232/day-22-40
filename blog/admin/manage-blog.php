@@ -14,15 +14,15 @@ require_once '../vendor/autoload.php';
 //      $login->adminLogOut();
 //    }
 
-$managecatagory=new App\classes\ManageCatagory();     //create object using use
-$messageResult= $managecatagory->viewManageCatagory();
+$managecatagory=new App\classes\ManageBlog();     //create object using use
+$messageResult= $managecatagory->viewItemaddBlog();
 $viewManage=mysqli_fetch_assoc($messageResult);
 
-$message='';
-if(isset($_GET['delete'])){
-  $id=$_GET['id'];
-  $message=$managecatagory->deleteManageCatagory($id);
-}
+// $message='';
+// if(isset($_GET['delete'])){
+//   $id=$_GET['id'];
+//   $message=$managecatagory->deleteManageCatagory($id);
+// }
 ?>
 
 
@@ -37,7 +37,6 @@ if(isset($_GET['delete'])){
 </head>
 <body>
 <?php include 'includes/menu.php'?>
-<h3><?php echo $message?></h3>
 <div class="container">
       <div class="row mt-5">
         <div class="col-lg-6 m-auto ">
@@ -45,8 +44,11 @@ if(isset($_GET['delete'])){
   <thead>
     <tr>
       <th scope="col">SL No</th>
-      <th scope="col">Catagory Name </th>
-      <th scope="col">Catagory Description</th>
+      <th scope="col">Blog Name </th>
+      <th scope="col">Blog Tittle </th>
+      <th scope="col">Short Description</th>
+      <th scope="col">Long Description</th>
+      <th scope="col">Blog Image</th>
       <th scope="col">Publication Status</th>
       <th scope="col">action</th>
     </tr>
@@ -56,11 +58,14 @@ if(isset($_GET['delete'])){
     <tr>
       <th scope="row"><?php echo $viewManage['id']?></th>
       <td><?php echo $viewManage['name']?></td>
-      <td><?php echo $viewManage['description']?></td>
+      <td><?php echo $viewManage['blog_title']?></td>
+      <td><?php echo $viewManage['short_description']?></td>
+      <td><?php echo $viewManage['long_description']?></td>
+      <td><?php echo $viewManage['blog_image']?></td>
       <td><?php echo $viewManage['status']?></td>
       <td>
-          <a href="edit-catagory.php?id=<?php echo $viewManage['id']?>">edit</a>
-          <a href="?delete=true&id=<?php echo $viewManage['id']?>">delete</a>
+          <a href="">edit</a>
+          <a href="">delete</a>
       </td>
     </tr>
 <?php }?>

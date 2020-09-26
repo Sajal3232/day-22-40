@@ -6,9 +6,10 @@ if($_SESSION['id']==null){
 use App\classes\Login;
 
 require_once '../vendor/autoload.php';
-$login=new App\classes\Login();  
-   if(isset($_GET['logout'])){
-     $login->adminLogOut();
+$manageblog=new App\classes\ManageBlog(); 
+$message='';
+   if(isset($_POST['btn'])){
+    $message= $manageblog->addItemAddBlog($_POST);
    }
 ?>
 
@@ -28,9 +29,11 @@ $login=new App\classes\Login();
 <div class="container">
       <div class="row mt-5">
         <div class="col-lg-6 m-auto ">
+          <h3><?php echo $message?></h3>
+          <form action="" method="post">
             <div class="form-group row">
-              <label for="inputEmail3" class="col-sm-2 col-form-label">Catagory Name</label>
-                <select name="catagory_name" class="form-control" id="">
+              <label for="inputEmail3" class="col-sm-2 col-form-label">Blog catagory</label>
+                <select name="blog_catagory" class="form-control col-sm-10" id="">
                     <option value="">---select catagory name---</option>
                     <option value="1">catagory 1</option>
                     <option value="2">catagory 2</option>
@@ -46,14 +49,14 @@ $login=new App\classes\Login();
             <div class="form-group row">
               <label for="inputPassword3" class="col-sm-2 col-form-label">Short description</label>
               <div class="col-sm-10">
-                  <textarea name="short_description " class="form-control" id="" cols="30" rows="10"></textarea>
+                  <textarea name="short_description" class="form-control" id="" cols="30" rows="10"></textarea>
                </div>
             </div>
 
             <div class="form-group row">
               <label for="inputPassword3" class="col-sm-2 col-form-label">Long description</label>
               <div class="col-sm-10">
-                  <textarea name="long_description " class="form-control" id="" cols="30" rows="10"></textarea>
+                  <textarea name="long_description" class="form-control" id="" cols="30" rows="10"></textarea>
                </div>
             </div>
 
@@ -75,7 +78,7 @@ $login=new App\classes\Login();
             <div class="form-group row">
             <label for="inputPassword3" class="col-sm-2 col-form-label"></label>
               <div class="col-sm-10">
-                <button type="submit" class="btn btn-primary" name="btn">Save Catagory</button>
+                <button type="submit" class="btn btn-primary" name="btn">Save Blog</button>
               </div>
             </div>
           </form>
