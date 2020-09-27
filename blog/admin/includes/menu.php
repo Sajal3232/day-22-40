@@ -24,7 +24,7 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a class="dropdown-item" href="add-blog.php">Add blog</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Manage blog</a></li>
+            <li><a class="dropdown-item" href="manage-blog.php">Manage blog</a></li>
           </ul>
         </li>
 

@@ -9,6 +9,8 @@ if($_SESSION['id']==null){
 // use App\classes\Login;
 
 require_once '../vendor/autoload.php';
+
+
 // $login=new App\classes\Login();  
 //    if(isset($_GET['logout'])){
 //      $login->adminLogOut();
@@ -64,7 +66,7 @@ $viewManage=mysqli_fetch_assoc($messageResult);
       <td><?php echo $viewManage['blog_image']?></td>
       <td><?php echo $viewManage['status']?></td>
       <td>
-          <a href="">edit</a>
+          <a href="edit-blog.php?id=<?php echo $viewManage['id']?>">edit</a>
           <a href="">delete</a>
       </td>
     </tr>

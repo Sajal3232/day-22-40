@@ -28,6 +28,44 @@ class ManageBlog{
          };
 
     }
+
+
+    public function getManageBlogById($id){
+        $sql="SELECT * FROM infoblog WHERE id='$id' ";
+        if(mysqli_query(Database::dbConnection(),$sql)){
+            $updateManageBlogId=mysqli_query(Database::dbConnection(),$sql);
+            return $updateManageBlogId;       
+         }else{
+            die("error problem".mysqli_error(Database::dbConnection()));
+        };
+    
+    }
+
+    public function updateManageBlogInfo($data){
+        $sql= "UPDATE infoblog SET name='$data[blog_name]',blog_title='$data[blog_title]',short_description='$data[short_description]',long_description='$data[long_description]',blog_image='$data[blog_image]', status='$data[status]' WHERE id='$data[id]' ";
+    
+        if(mysqli_query(Database::dbConnection(),$sql)){
+           header('Location:manage-blog.php');
+           $message="update-successfully";
+           return $message;
+            
+         }else{
+            die("error problem".mysqli_error(Database::dbConnection()));
+        };
+       }
+
+
+
+       public function getAllPublishCatagoryInfo(){
+           $sql="SELECT * FROM infoblog WHERE status=1";
+           if(mysqli_query(Database::dbConnection(),$sql)){
+            $queryResult=mysqli_query(Database::dbConnection(),$sql);
+            return $queryResult;
+             
+          }else{
+             die("error problem".mysqli_error(Database::dbConnection()));
+         };
+       }
 }
 
 ?>
